@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+
+
+.dino {
+width: 60px;
+height: 90px;
+position: absolute;
+bottom: 0;
+left: 50px;
+background-image: url(/image/mario-parado1.png);
+background-size: 50px;
+background-repeat: no-repeat;
+background-position: center bottom;
+/* Perna do dinossauro */
+transform: translateY(0);
+transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+z-index: 10;
+}
+
+.dino.correndo {
+  background-image: url(/image/mario-correndo.gif);
+}
+
+.dino.dino-jumping {
+  transform: translateY(-120px);
+}
+
+.dino.gameover {
+  background-image: url(/image/mario-morrendo.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+#start-btn {
+  display: block;
+  margin: 30px auto;
+  font-size: 16px;
+  background: #5c5c5c;
+  color: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+}
+
+#start-btn:hover {
+  background: #6c6c6c;
+}
+
+#start-btn:active { /* Efeito ao pressionar o botão */
+  background: #4c4c4c; 
+  box-shadow: 2px 2px 0px #000000; 
+  transform: translate(2px, 2px);
+}
+
+#gameover {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 32px;
+  color: #FF3D3D;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  text-shadow: 3px 3px 0px #000000;
+  padding: 15px;
+}
+#intro {
+width: 100%;
+text-align: center;
+font-family: 'Press Start 2P', cursive;
+color: #333;
+margin-bottom: 20px;
+}
+/* Estilo do container principal */
+#game-container {
+  width: 800px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  overflow: hidden; /* Esconde os elementos que saem da tela */
+  border-bottom: 2px solid #333;
+  background-image: url(/image/fundo4.jpg);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  box-shadow: 5px 5px 0px #222222; 
+  border: 3px solid #000000; 
+  border-radius: 0; 
+}
+
+.cactus {
+width: 30px;
+height: 60px;
+position: absolute;
+bottom: 0;
+right: -30px; /* Começa fora da tela
+*/
+background-image: url(/image/cano.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center bottom;
+z-index: 5;
+animation: moveCactus 2s linear infinite;
+border-radius: 5px;
+}
+.cactus-small {
+height: 40px; /* Variante mais baixa */
+}
+.cactus-group {
+width: 80px; /* Grupo de cactos */
+}
+
+.score {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 22px;
+  color: #ffffff;
+  text-shadow: 2px 2px 0px #000000;
+  z-index: 10;
+  letter-spacing: 1px; /* Controle o espacamento */
+}
+
+/* Chão */
+.ground {
+  width: 200%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-repeat: repeat-x;
+  background-size: auto 30px;
+  margin-bottom: -19px;
+}
+
+/* Quando o dino está pulando */
+.dino-jumping {
+ transform: translateY(-120px);
+ background-image: url(/image/mario-pulando.png);
+ background-size: 50px;
+}
+/* Quando ocorre colisão */
+.game-collision {
+animation: shake 0.5s linear;
+}
+@keyframes shake {
+ 0%, 100% { transform: translateX(0); }
+ 25% { transform: translateX(-5px); }
+ 75% { transform: translateX(5px); }
+}
+
+
+@media (max-width: 800px) {
+#game-container {
+width: 100%;
+height: 200px;
+}
+.dino {
+width: 40px;
+height: 60px;
+}
+}
+
+@keyframes moveCactus {
+from { transform: translateX(50px); }
+to { transform: translateX(-900px); }
+}
+.cactus {
+animation: moveCactus 2s linear infinite;
+}
+
+.cloud {
+position: relative;
+top: 50px;
+left: 100%;
+width: 80px;
+height: 30px;
+background-image: url(/image/nuvem.png);
+background-size: 60px;
+background-repeat: no-repeat;
+background-position: center bottom;
+border-radius: 50px;
+animation: moveCloud 20s linear infinite;
+
+}
+
+@keyframes moveCloud {
+0% { left: 100%; }
+100% { left: -80px; }
+}
+
+.cactus-fast {
+animation-duration: 1.5s;
+}
+
+
+#footer {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  color: #333;
+  margin-top: 20px;
+  font-size: 14px;
+}
