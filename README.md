@@ -4,17 +4,6 @@ Uma recriação do clássico jogo do dinossauro do Google Chrome, desenvolvido c
 
 ---
 
-## �� Índice
-
-* [Sobre o Projeto](#-sobre-o-projeto)
-* [Funcionalidades](#-funcionalidades)
-* [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-* [Como Executar](#-como-executar)
-* [Como Jogar](#-como-jogar)
-* [Autor](#-autor)
-
----
-
 ## 📝 Sobre o Projeto
 
 Este projeto foi criado como uma forma de praticar e aprimorar minhas habilidades em HTML, CSS e JavaScript, recriando a mecânica simples e divertida do famoso T-Rex Runner. O objetivo era construir um jogo funcional e responsivo diretamente no navegador.
@@ -31,5 +20,4 @@ As seguintes ferramentas e tecnologias foram usadas na construção do projeto:
 
 ---
 
-# ✒️ Autor
-Desenvolvido por Victor Gabriel.
+# ✒️ Desenvolvido por Victor Gabriel.
