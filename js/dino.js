@@ -26,7 +26,12 @@ const MAX_CACTUS_SPAWN_TIME_FACTOR = 0.9; // Fator máximo de spawn de cactos (9
 const ABSOLUTE_MIN_SPAWN_INTERVAL_MS = 500; // Intervalo mínimo absoluto de spawn de cactos em milissegundos
 
 // --- Funções do Jogo ---
-restartBtnMobile.addEventListener('click', resetGame);
+restartBtnMobile.addEventListener('touchstart', (event) => {
+  event.preventDefault(); // Previne o comportamento padrão do navegador (como zoom ou scroll)
+  event.stopPropagation(); // Impede que o evento de toque chegue ao game-container
+  resetGame();
+});
+
 
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Space' && !spacePressed && !isJumping && !isGameOver && gameStarted) {
