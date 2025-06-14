@@ -1,6 +1,31 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+body {
+  touch-action: manipulation; /* Ajuda a prevenir zoom e outros gestos indesejados */
+}
+
+#restart-btn-mobile {
+  display: none; /* Começa escondido */
+  position: absolute;
+  top: 60%; /* Posicionado abaixo do texto "GAME OVER" */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101; /* Garante que fique sobre outros elementos */
+  
+  /* Reutilizando um estilo parecido com o do botão de iniciar */
+  padding: 10px 20px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  background: #5c5c5c;
+  color: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
 
 .dino {
 width: 60px;
@@ -43,7 +68,7 @@ z-index: 10;
   box-shadow: 4px 4px 0px #000000;
   border-radius: 0;
   cursor: pointer;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Ubuntu", sans-serif;
   text-transform: uppercase; /* Transforma o texto em maiúsculas */
   transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
 }
@@ -59,7 +84,7 @@ z-index: 10;
 }
 
 #gameover {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Ubuntu", sans-serif;
   font-size: 32px;
   color: #FF3D3D;
   text-align: center;
@@ -75,7 +100,7 @@ z-index: 10;
 #intro {
 width: 100%;
 text-align: center;
-font-family: 'Press Start 2P', cursive;
+font-family: "Ubuntu", sans-serif;
 color: #333;
 margin-bottom: 20px;
 }
@@ -122,11 +147,11 @@ width: 80px; /* Grupo de cactos */
   position: absolute;
   top: 15px;
   right: 25px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Ubuntu", sans-serif;
   font-size: 22px;
   color: #ffffff;
   text-shadow: 2px 2px 0px #000000;
-  z-index: 10;
+  z-index: 10; 
   letter-spacing: 1px; /* Controle o espacamento */
 }
 
@@ -168,6 +193,37 @@ height: 200px;
 width: 40px;
 height: 60px;
 }
+
+/* --- NOVAS REGRAS PARA AJUSTE FINO --- */
+.score {
+  font-size: 20px;
+  top: 10px;
+  right: 10px;
+
+}
+
+#intro {
+  padding: 0 10px; /* Evita que o texto encoste nas bordas da tela */
+  margin-bottom: 10px;
+}
+
+#intro h1 {
+  font-size: 30px; /* Ajusta o tamanho do título */
+}
+
+#intro p {
+  font-size: 17px; /* Ajusta o tamanho das instruções */
+  line-height: 1.5;
+}
+
+#gameover {
+  font-size: 24px; /* Ajusta o texto de Game Over */
+}
+
+#footer {
+  font-size: 10px; /* Ajusta o texto do rodapé */
+  padding: 0 10px;
+}
 }
 
 @keyframes moveCactus {
@@ -205,7 +261,7 @@ animation-duration: 1.5s;
 
 #footer {
   text-align: center;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Ubuntu", sans-serif;
   color: #333;
   margin-top: 20px;
   font-size: 14px;

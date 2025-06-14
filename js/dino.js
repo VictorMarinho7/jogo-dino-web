@@ -4,6 +4,8 @@ const scoreElement = document.getElementById('score');
 const gameOverElement = document.getElementById('gameover');
 const startBtn = document.getElementById('start-btn');
 const intro = document.getElementById('intro'); // Elemento de introdução
+const gameContainer = document.getElementById('game-container');
+const restartBtnMobile = document.getElementById('restart-btn-mobile');
 
 // --- Variáveis de Jogo e Dificuldade ---
 let isJumping = false;
@@ -24,6 +26,7 @@ const MAX_CACTUS_SPAWN_TIME_FACTOR = 0.9; // Fator máximo de spawn de cactos (9
 const ABSOLUTE_MIN_SPAWN_INTERVAL_MS = 500; // Intervalo mínimo absoluto de spawn de cactos em milissegundos
 
 // --- Funções do Jogo ---
+restartBtnMobile.addEventListener('click', resetGame);
 
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Space' && !spacePressed && !isJumping && !isGameOver && gameStarted) {
@@ -38,6 +41,17 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
   if (e.code === 'Space') {
     spacePressed = false;
+  }
+});
+
+// Adicione este listener de evento de toque ao seu código
+gameContainer.addEventListener('touchstart', (event) => {
+  // event.preventDefault() previne comportamentos padrão do navegador, como zoom ou scroll.
+  event.preventDefault();
+
+  // Chama a função de pulo sob as mesmas condições da tecla de espaço
+  if (!isJumping && !isGameOver && gameStarted) {
+    jump();
   }
 });
 
@@ -117,10 +131,11 @@ function scheduleNextCactus() {
 }
 
 function GameOver() {
-  if (isGameOver) return;
-  isGameOver = true;
-  gameStarted = false;
-  gameOverElement.style.display = 'block';
+    if (isGameOver) return;
+    isGameOver = true;
+    gameStarted = false;
+    gameOverElement.style.display = 'block';
+    restartBtnMobile.style.display = 'block'; // MOSTRA o botão de reiniciar
 
   if (cactusSchedulerTimeoutId) {
     clearTimeout(cactusSchedulerTimeoutId);
@@ -138,6 +153,7 @@ function resetGame() {
   isGameOver = false;
   scoreElement.textContent = '0000';
   gameOverElement.style.display = 'none';
+  restartBtnMobile.style.display = 'none'; // ESCONDE o botão de reiniciar
 
   if (cactusSchedulerTimeoutId) {
     clearTimeout(cactusSchedulerTimeoutId);
