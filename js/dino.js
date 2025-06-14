@@ -32,6 +32,12 @@ restartBtnMobile.addEventListener('touchstart', (event) => {
   resetGame();
 });
 
+// ADIÇÃO PARA COMPUTADOR (Faz o botão voltar a funcionar com o mouse)
+restartBtnMobile.addEventListener('click', (event) => {
+    event.preventDefault(); // Boa prática para botões
+    resetGame();
+});
+
 
 document.addEventListener('keydown', (e) => {
   if (e.code === 'Space' && !spacePressed && !isJumping && !isGameOver && gameStarted) {
