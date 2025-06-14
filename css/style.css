@@ -4,6 +4,7 @@
 
 body {
   touch-action: manipulation; /* Ajuda a prevenir zoom e outros gestos indesejados */
+  background-color: #282c34;
 }
 
 #restart-btn-mobile {
@@ -101,7 +102,7 @@ z-index: 10;
 width: 100%;
 text-align: center;
 font-family: "Ubuntu", sans-serif;
-color: #333;
+color: #ffffff;
 margin-bottom: 20px;
 }
 /* Estilo do container principal */
@@ -262,7 +263,17 @@ animation-duration: 1.5s;
 #footer {
   text-align: center;
   font-family: "Ubuntu", sans-serif;
-  color: #333;
+  color: #ffffff;
   margin-top: 20px;
   font-size: 14px;
+}
+
+#footer a {
+  color: #00c3ff;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+#footer a:hover {
+  text-decoration: underline;
 }
