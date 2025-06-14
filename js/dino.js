@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  const instrucaoPulo = document.getElementById('instrucao-pulo');
+  const instrucaoReinicio = document.getElementById('instrucao-reinicio');
+
+  if (isMobile) {
+    instrucaoPulo.textContent = 'Toque na tela para pular.';
+    instrucaoReinicio.textContent = 'Use o botão "Reiniciar" após o fim do jogo.';
+  }
+  // Se não for mobile, o texto padrão do HTML já está correto, então não fazemos nada.
+});
+
 // Elementos do jogo
 const dino = document.getElementById('dino');
 const scoreElement = document.getElementById('score');
