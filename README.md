@@ -1,4 +1,4 @@
-# Jogo do Dino 🦖
+# Corrida do Encanador 👨🏽‍🔧🦖
 
 Uma recriação do clássico jogo do dinossauro do Google Chrome, desenvolvido com tecnologias web puras como HTML, CSS e JavaScript.
 
