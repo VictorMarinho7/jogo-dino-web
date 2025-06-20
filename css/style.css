@@ -1,279 +1,303 @@
 @charset "UTF-8";
 
+/* ===== IMPORTAÇÃO DE FONTES E ESTILOS GERAIS ===== */
+
+/* Importa a fonte 'Ubuntu' do Google Fonts para ser usada no projeto. */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+/* Estilos aplicados a todo o corpo da página. */
 body {
-  touch-action: manipulation; /* Ajuda a prevenir zoom e outros gestos indesejados */
-  background-color: #282c34;
+    background-color: #282c34;
+    /* Ajuda a prevenir comportamentos indesejados de toque em dispositivos móveis, como zoom. */
+    touch-action: manipulation;
 }
 
-#restart-btn-mobile {
-  display: none; /* Começa escondido */
-  position: absolute;
-  top: 60%; /* Posicionado abaixo do texto "GAME OVER" */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 101; /* Garante que fique sobre outros elementos */
-  
-  /* Reutilizando um estilo parecido com o do botão de iniciar */
-  padding: 10px 20px;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 14px;
-  background: #5c5c5c;
-  color: #ffffff;
-  border: 3px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 0;
-  cursor: pointer;
-  text-transform: uppercase;
+/* ===== LAYOUT PRINCIPAL E CONTAINERS ===== */
+
+/* Estilo do container principal do jogo. */
+#game-container {
+    width: 800px;
+    height: 300px;
+    position: relative;
+    margin: 50px auto;
+    overflow: hidden; /* Esconde elementos que saem dos limites do container. */
+    border: 3px solid #000000;
+    border-bottom: 2px solid #333;
+    border-radius: 0;
+    box-shadow: 5px 5px 0px #222222;
+    background-image: url(/image/fundo4.jpg);
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
 }
 
+/* Estilo da seção de introdução. */
+#intro {
+    width: 100%;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: "Ubuntu", sans-serif;
+    text-align: center;
+}
+
+/* Estilo do rodapé da página. */
+#footer {
+    margin-top: 20px;
+    color: #ffffff;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Estilo dos links dentro do rodapé. */
+#footer a {
+    color: #00c3ff;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Efeito 'hover' para os links do rodapé. */
+#footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== PERSONAGEM (DINO/ENCANADOR) ===== */
+
+/* Estilo base do personagem. */
 .dino {
-width: 60px;
-height: 90px;
-position: absolute;
-bottom: 0;
-left: 50px;
-background-image: url(/image/mario-parado1.png);
-background-size: 50px;
-background-repeat: no-repeat;
-background-position: center bottom;
-/* Perna do dinossauro */
-transform: translateY(0);
-transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-z-index: 10;
+    width: 60px;
+    height: 90px;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    z-index: 10;
+    background-image: url(/image/mario-parado1.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Estilos dos diferentes estados do personagem. */
 .dino.correndo {
-  background-image: url(/image/mario-correndo.gif);
+    background-image: url(/image/mario-correndo.gif);
 }
 
 .dino.dino-jumping {
-  transform: translateY(-120px);
+    transform: translateY(-120px);
+    background-image: url(/image/mario-pulando.png);
+    background-size: 50px;
 }
 
 .dino.gameover {
-  background-image: url(/image/mario-morrendo.png);
-  background-size: 40px;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+    background-image: url(/image/mario-morrendo.png);
+    background-size: 40px;
 }
 
-#start-btn {
-  display: block;
-  margin: 30px auto;
-  font-size: 16px;
-  background: #5c5c5c;
-  color: #ffffff;
-  border: 3px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 0;
-  cursor: pointer;
-  font-family: "Ubuntu", sans-serif;
-  text-transform: uppercase; /* Transforma o texto em maiúsculas */
-  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
-}
+/* ===== OBSTÁCULOS (CACTUS/CANOS) E CENÁRIO ===== */
 
-#start-btn:hover {
-  background: #6c6c6c;
-}
-
-#start-btn:active { /* Efeito ao pressionar o botão */
-  background: #4c4c4c; 
-  box-shadow: 2px 2px 0px #000000; 
-  transform: translate(2px, 2px);
-}
-
-#gameover {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 32px;
-  color: #FF3D3D;
-  text-align: center;
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-  text-shadow: 3px 3px 0px #000000;
-  padding: 15px;
-}
-#intro {
-width: 100%;
-text-align: center;
-font-family: "Ubuntu", sans-serif;
-color: #ffffff;
-margin-bottom: 20px;
-}
-/* Estilo do container principal */
-#game-container {
-  width: 800px;
-  height: 300px;
-  position: relative;
-  margin: 50px auto;
-  overflow: hidden; /* Esconde os elementos que saem da tela */
-  border-bottom: 2px solid #333;
-  background-image: url(/image/fundo4.jpg);
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  box-shadow: 5px 5px 0px #222222; 
-  border: 3px solid #000000; 
-  border-radius: 0; 
-}
-
+/* Estilo base dos obstáculos. */
 .cactus {
-width: 30px;
-height: 60px;
-position: absolute;
-bottom: 0;
-right: -30px; /* Começa fora da tela
-*/
-background-image: url(/image/cano.png);
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center bottom;
-z-index: 5;
-animation: moveCactus 2s linear infinite;
-border-radius: 5px;
+    width: 30px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    right: -30px; /* Começa fora da tela. */
+    z-index: 5;
+    background-image: url(/image/cano.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    animation: moveCactus 2s linear infinite;
 }
+
+/* Variações dos obstáculos. */
 .cactus-small {
-height: 40px; /* Variante mais baixa */
+    height: 40px;
 }
+
 .cactus-group {
-width: 80px; /* Grupo de cactos */
-}
-
-.score {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 22px;
-  color: #ffffff;
-  text-shadow: 2px 2px 0px #000000;
-  z-index: 10; 
-  letter-spacing: 1px; /* Controle o espacamento */
-}
-
-/* Chão */
-.ground {
-  width: 200%;
-  height: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-repeat: repeat-x;
-  background-size: auto 30px;
-  margin-bottom: -19px;
-}
-
-/* Quando o dino está pulando */
-.dino-jumping {
- transform: translateY(-120px);
- background-image: url(/image/mario-pulando.png);
- background-size: 50px;
-}
-/* Quando ocorre colisão */
-.game-collision {
-animation: shake 0.5s linear;
-}
-@keyframes shake {
- 0%, 100% { transform: translateX(0); }
- 25% { transform: translateX(-5px); }
- 75% { transform: translateX(5px); }
-}
-
-
-@media (max-width: 800px) {
-#game-container {
-width: 100%;
-height: 200px;
-}
-.dino {
-width: 40px;
-height: 60px;
-}
-
-/* --- NOVAS REGRAS PARA AJUSTE FINO --- */
-.score {
-  font-size: 20px;
-  top: 10px;
-  right: 10px;
-
-}
-
-#intro {
-  padding: 0 10px; /* Evita que o texto encoste nas bordas da tela */
-  margin-bottom: 10px;
-}
-
-#intro h1 {
-  font-size: 30px; /* Ajusta o tamanho do título */
-}
-
-#intro p {
-  font-size: 17px; /* Ajusta o tamanho das instruções */
-  line-height: 1.5;
-}
-
-#gameover {
-  font-size: 24px; /* Ajusta o texto de Game Over */
-}
-
-#footer {
-  font-size: 10px; /* Ajusta o texto do rodapé */
-  padding: 0 10px;
-}
-}
-
-@keyframes moveCactus {
-from { transform: translateX(50px); }
-to { transform: translateX(-900px); }
-}
-.cactus {
-animation: moveCactus 2s linear infinite;
-}
-
-.cloud {
-position: relative;
-top: 50px;
-left: 100%;
-width: 80px;
-height: 30px;
-background-image: url(/image/nuvem.png);
-background-size: 60px;
-background-repeat: no-repeat;
-background-position: center bottom;
-border-radius: 50px;
-animation: moveCloud 20s linear infinite;
-
-}
-
-@keyframes moveCloud {
-0% { left: 100%; }
-100% { left: -80px; }
+    width: 80px;
 }
 
 .cactus-fast {
-animation-duration: 1.5s;
+    animation-duration: 1.5s;
 }
 
-
-#footer {
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
-  color: #ffffff;
-  margin-top: 20px;
-  font-size: 14px;
+/* Estilo do chão que se move. */
+.ground {
+    width: 200%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -19px;
+    background-repeat: repeat-x;
+    background-size: auto 30px;
 }
 
-#footer a {
-  color: #00c3ff;
-  text-decoration: none;
-  transition: color 0.3s, text-decoration 0.3s;
+/* Estilo das nuvens que se movem. */
+.cloud {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    top: 50px;
+    left: 100%;
+    background-image: url(/image/nuvem.png);
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    animation: moveCloud 20s linear infinite;
 }
 
-#footer a:hover {
-  text-decoration: underline;
+/* ===== ELEMENTOS DE UI (BOTÕES E TEXTOS) ===== */
+
+/* Estilo da pontuação. */
+.score {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    z-index: 10;
+    color: #ffffff;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 22px;
+    text-shadow: 2px 2px 0px #000000;
+    letter-spacing: 1px;
+}
+
+/* Estilo do texto 'GAME OVER'. */
+#gameover {
+    display: none; /* Começa escondido. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 15px;
+    color: #FF3D3D;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 32px;
+    text-align: center;
+    text-shadow: 3px 3px 0px #000000;
+}
+
+/* Estilo do botão 'Iniciar Jogo'. */
+#start-btn {
+    display: block;
+    margin: 30px auto;
+    font-size: 16px;
+    font-family: "Ubuntu", sans-serif;
+    color: #ffffff;
+    background: #5c5c5c;
+    border: 3px solid #000000;
+    border-radius: 0;
+    box-shadow: 4px 4px 0px #000000;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+}
+
+#start-btn:hover {
+    background: #6c6c6c;
+}
+
+/* Efeito ao pressionar o botão de iniciar. */
+#start-btn:active {
+    background: #4c4c4c;
+    box-shadow: 2px 2px 0px #000000;
+    transform: translate(2px, 2px);
+}
+
+/* Estilo do botão 'Reiniciar' para dispositivos móveis. */
+#restart-btn-mobile {
+    display: none; /* Começa escondido. */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101; /* Fica sobre o texto 'GAME OVER'. */
+    padding: 10px 20px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    background: #5c5c5c;
+    color: #ffffff;
+    border: 3px solid #000000;
+    border-radius: 0;
+    box-shadow: 4px 4px 0px #000000;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* ===== ANIMAÇÕES (KEYFRAMES) ===== */
+
+/* Animação de movimento dos obstáculos. */
+@keyframes moveCactus {
+    from {
+        transform: translateX(50px);
+    }
+    to {
+        transform: translateX(-900px);
+    }
+}
+
+/* Animação de movimento das nuvens. */
+@keyframes moveCloud {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -80px;
+    }
+}
+
+/* Animação de 'tremor' ao colidir. */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ===== DESIGN RESPONSIVO (MEDIA QUERIES) ===== */
+
+/* Estilos aplicados quando a largura da tela for 800px ou menor. */
+@media (max-width: 800px) {
+    #game-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    .dino {
+        width: 40px;
+        height: 60px;
+    }
+    
+    .score {
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+    }
+
+    #intro {
+        padding: 0 10px; /* Evita que o texto encoste nas bordas. */
+        margin-bottom: 10px;
+    }
+
+    #intro h1 {
+        font-size: 30px;
+    }
+
+    #intro p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    #gameover {
+        font-size: 24px;
+    }
+
+    #footer {
+        font-size: 10px;
+        padding: 0 10px;
+    }
 }

@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corrida do Encanador</title>
-    <link rel="stylesheet" href="css/style.css">
 
+    <title>Corrida do Encanador</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <div id="intro">
-    <h1>Corrida do Encanador</h1>
-    <p id="instrucao-pulo">Pressione a tecla "Espaço" para pular.</p>
-  <p id="instrucao-reinicio">Pressione a tecla "R" para reiniciar o jogo.</p>
-    <p>Evite os obstáculos e tente alcançar a maior pontuação possível!</p>
-    <p>Divirta-se jogando!</p>
-  </div>
-  <button id="start-btn">Iniciar Jogo</button>
-<div id="game-container">
-  <div class="score" id="score">0000</div>
-  <div class="ground" id="ground"></div>
-  <div class="dino" id="dino"></div>
-  <div class="gameover" id="gameover">GAME OVER</div> 
-  <button id="restart-btn-mobile">Reiniciar</button> <!-- Botão de reiniciar -->
-  <div class="cloud"></div>
-</div>
-<p id="footer">Desenvolvido no Curso de Programação de Jogos Digitais por <a href="curriculo-victor-gabriel.pdf" target="_blank">Victor Gabriel</a> &copy; 2024</p>
+
+    <header id="intro">
+        <h1>Corrida do Encanador</h1>
+        
+        <p id="instrucao-pulo">Pressione a tecla "Espaço" para pular.</p>
+        <p id="instrucao-reinicio">Pressione a tecla "R" para reiniciar o jogo.</p>
+        <p>Evite os obstáculos e tente alcançar a maior pontuação possível!</p>
+        <p>Divirta-se jogando!</p>
+    </header>
+
+    <main>
+        <button id="start-btn">Iniciar Jogo</button>
+
+        <div id="game-container">
+            
+            <div id="score" class="score">0000</div>
+            <div id="ground" class="ground"></div>
+            <div id="dino" class="dino"></div>
+            <div id="cloud" class="cloud"></div>
+
+            <div id="gameover" class="gameover">GAME OVER</div>
+            <button id="restart-btn-mobile">Reiniciar</button> </div>
+    </main>
+
+    <footer id="footer">
+        <p>
+            Desenvolvido no Curso de Programação de Jogos Digitais por 
+            <a href="curriculo-victor-gabriel.pdf" target="_blank">Victor Gabriel</a> &copy; 2024
+        </p>
+    </footer>
+
+    <script src="js/dino.js"></script>
+
 </body>
-<script src="js/dino.js"></script>
+
 </html>
