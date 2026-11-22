@@ -20,4 +20,14 @@ As seguintes ferramentas e tecnologias foram usadas na construção do projeto:
 
 ---
 
+## 🚀 Como Jogar
+
+Como o projeto é nativo da Web, a execução é imediata. 
+
+1. Acesse o link abaixo:
+   ```bash
+   https://corridadoencanador.netlify.app
+
+---
+
 ### ✒️ Desenvolvido por Victor Gabriel.
